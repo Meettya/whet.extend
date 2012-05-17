@@ -1,3 +1,6 @@
+
+require('coffee-script');
+
 var tests = require( './extend' );
 
 Object.keys( tests ).forEach( function( test ){

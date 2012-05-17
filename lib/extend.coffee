@@ -1,0 +1,80 @@
+###
+* node.extend
+* Copyright 2011, John Resig
+* Dual licensed under the MIT or GPL Version 2 licenses.
+* http://jquery.org/license
+*
+* @fileoverview
+* Port of jQuery.extend that actually works on node.js
+* Refactored and Re-writed at CoffeeScript
+###
+
+fs = require 'fs'
+
+extend = (deep, target, args...) ->
+
+  unless _isClass deep, 'Boolean'
+    args.unshift target
+    [ target, deep ] = [ deep or {}, false ]
+
+  #Handle case when target is a string or something (possible in deep copy)
+  target = {} if _isPrimitiveType target 
+  
+  for options in args when options?
+    for name, copy of options when copy? and target[name] isnt copy
+      target[name] = _findValue deep, copy, target[name]
+
+  target
+
+###
+Internal methods from now
+###
+
+_isClass = (obj, str) ->
+  "[object #{str}]" is Object::toString.call obj
+
+_isOwnProp = (obj, prop) ->
+  Object::hasOwnProperty.call obj, prop
+
+_isTypeOf = (obj, str) ->
+  str is typeof obj
+
+_isPlainObj = (obj) ->
+  
+  return false unless obj 
+  return false if obj.nodeType or obj.setInterval or not _isClass obj, 'Object'
+
+  # Not own constructor property must be Object
+  return false if obj.constructor and
+                  not _isOwnProp(obj, 'constructor') and
+                  not _isOwnProp(obj.constructor::, 'isPrototypeOf')
+
+  # Own properties are enumerated firstly, so to speed up, 
+  # if last one is own, then all properties are own.
+  key for key of obj
+  key is undefined or _isOwnProp obj, key
+
+_isPrimitiveType = (obj) ->
+  not ( _isTypeOf(obj, 'object') or _isTypeOf(obj, 'function') )
+
+_prepareClone = (copy, src) ->
+  if _isClass copy, 'Array'
+    if _isClass src, 'Array' then src else []
+  else
+    if _isPlainObj src then src else {}
+
+_findValue = (deep, copy, src) ->
+  # if we're merging plain objects or arrays
+  if deep and ( _isClass(copy, 'Array') or _isPlainObj copy )
+    clone = _prepareClone copy, src       
+    extend deep, clone, copy         
+  else
+    copy
+
+
+###
+* @public
+###
+extend.version = JSON.parse( fs.readFileSync( __dirname + '/../package.json', 'utf8' )).version
+
+module.exports = extend

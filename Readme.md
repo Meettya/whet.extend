@@ -1,13 +1,14 @@
-# node.extend
+# node.extend-coffeescript
 
-A port of jQuery.extend that **actually works** on node.js
+A CoffeeScript port of node.extend as port of jQuery.extend that **actually works** on node.js
 
 
 
 ## Description
 
-None of the existing ones on npm really work therefore I ported it myself.
+Its drop-in replacement of [node.extend](https://github.com/dreamerslab/node.extend), re-factored and re-written with CoffeeScript
 
+I just need some more CS practice AND its fun :)
 
 
 ## Usage
