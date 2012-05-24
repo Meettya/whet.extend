@@ -1,7 +1,7 @@
 {
   "name"        : "whet.extend",
   "version"     : "0.9.4",
-  "description" : "A CoffeeScript version of port of jQuery.extend that actually works on node.js",
+  "description" : "A sharped version of port of jQuery.extend that actually works on node.js",
   "keywords"    : [ "extend", "jQuery", "jQuery extend", "clone", "copy", "inherit" ],
   "author"      : "Dmitrii Karpich <meettya@gmail.com>",
   "devDependencies": {

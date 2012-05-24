@@ -35,6 +35,7 @@ task 'build', 'build module from source', build = (cb) ->
   log ' -> build done', green
   
 task 'test', 'test builded module', ->
-  test_file = 'test/run.coffee'
-  run test_file, -> log 'All tests passed :)', green
+  build ->
+    test_file = 'test/run.coffee'
+    run test_file, -> log ' -> all tests passed :)', green
   

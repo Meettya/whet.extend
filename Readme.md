@@ -1,6 +1,6 @@
-# node.extend-coffeescript
+# whet.extend
 
-A CoffeeScript port of node.extend as port of jQuery.extend that **actually works** on node.js
+A sharped version of node.extend as port of jQuery.extend that **actually works** on node.js
 
 
 
@@ -16,9 +16,3 @@ I just need some more CS practice AND its fun :)
 Checkout the doc from [jQuery](http://api.jquery.com/jQuery.extend/)
 
 
-
-## License
-
-Copyright 2011, John Resig
-Dual licensed under the MIT or GPL Version 2 licenses.
-http://jquery.org/license
