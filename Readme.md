@@ -1,3 +1,5 @@
+[![Build Status](https://secure.travis-ci.org/meettya/whet.extend.png)](http://travis-ci.org/meettya/whet.extend)
+
 # whet.extend
 
 A sharped version of node.extend as port of jQuery.extend that **actually works** on node.js
