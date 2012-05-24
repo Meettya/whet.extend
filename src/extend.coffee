@@ -1,17 +1,13 @@
 ###
-* node.extend
-* Copyright 2011, John Resig
-* Dual licensed under the MIT or GPL Version 2 licenses.
-* http://jquery.org/license
-*
-* @fileoverview
-* Port of jQuery.extend that actually works on node.js
-* Refactored and Re-writed at CoffeeScript
+ * whet.extend v0.9.4
+ * Standalone port of jQuery.extend that actually works on node.js
+ * https://github.com/Meettya/whet.extend
+ *
+ * Copyright 2012, Dmitrii Karpich
+ * Released under the MIT License
 ###
 
-fs = require 'fs'
-
-extend = (deep, target, args...) ->
+module.exports = extend = (deep, target, args...) ->
 
   unless _isClass deep, 'Boolean'
     args.unshift target
@@ -70,11 +66,3 @@ _findValue = (deep, copy, src) ->
     extend deep, clone, copy         
   else
     copy
-
-
-###
-* @public
-###
-extend.version = JSON.parse( fs.readFileSync( __dirname + '/../package.json', 'utf8' )).version
-
-module.exports = extend

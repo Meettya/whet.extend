@@ -32,12 +32,6 @@ var deep = {
 
 module.exports = {
 
-  'test .version' : function (){
-    extend.version.should.match( /^\d+\.\d+\.\d+$/ );
-
-    console.log( 'version test passed' );
-  },
-
   'merge string with string' : function (){
     var ori    = 'what u gonna say';
     var target = extend( ori, str );
