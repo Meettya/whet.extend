@@ -1,4 +1,4 @@
-[![Build Status](https://secure.travis-ci.org/meettya/whet.extend.png)](http://travis-ci.org/meettya/whet.extend)
+[![Build Status](https://secure.travis-ci.org/Meettya/whet.extend.png)](http://travis-ci.org/Meettya/whet.extend)
 
 # whet.extend
 
