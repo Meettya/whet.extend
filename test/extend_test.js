@@ -1,4 +1,4 @@
-var extend = require( '../lib/extend' );
+var extend = require( '../lib/whet.extend' );
 var should = require( 'should' );
 
 var str  = 'me a test';

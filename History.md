@@ -1,3 +1,7 @@
+## 0.9.7 / 2012-06-21 02:54 PM
+
+  - Rename extend.{ext} -> whet.extend.{ext}
+
 ## 0.9.5 / 2012-05-24 07:56 PM
 
   - Add travis-ci tests

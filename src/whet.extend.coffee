@@ -1,5 +1,5 @@
 ###
- * whet.extend v0.9.5
+ * whet.extend v0.9.7
  * Standalone port of jQuery.extend that actually works on node.js
  * https://github.com/Meettya/whet.extend
  *

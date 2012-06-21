@@ -1,6 +1,6 @@
 {
   "name"        : "whet.extend",
-  "version"     : "0.9.5",
+  "version"     : "0.9.7",
   "description" : "A sharped version of port of jQuery.extend that actually works on node.js",
   "keywords"    : [ "extend", "jQuery", "jQuery extend", "clone", "copy", "inherit" ],
   "author"      : "Dmitrii Karpich <meettya@gmail.com>",
