@@ -17,7 +17,7 @@ module.exports = extend = (deep, target, args...) ->
   target = {} if _isPrimitiveType target 
   
   for options in args when options?
-    for name, copy of options when copy? and target[name] isnt copy
+    for name, copy of options when (copy? or copy is null) and target[name] isnt copy
       target[name] = _findValue deep, copy, target[name]
 
   target
