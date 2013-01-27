@@ -15,13 +15,24 @@ if enableColors
   reset = '\x1B[0m'
 
 
-# Run a CoffeeScript through our node/coffee interpreter.
-run = (args, cb) ->
-  proc =         spawn 'node', ['./node_modules/.bin/coffee'].concat(args)
-  proc.stderr.on 'data', (buffer) -> console.log buffer.toString()
+###
+Just proc extender
+###
+proc_extender = (cb, proc) =>
+  proc.stderr.on 'data', (buffer) -> console.log "#{buffer}"
+  # proc.stdout.on 'data', (buffer) -> console.log  "#{buffer}".info
   proc.on        'exit', (status) ->
     process.exit(1) if status != 0
-    cb() if typeof cb is 'function'
+    cb() if typeof cb is 'function' 
+  null
+
+# Run a CoffeeScript through our node/coffee interpreter.
+run_coffee = (args, cb) =>
+  proc_extender cb, spawn 'node', ['./node_modules/.bin/coffee'].concat(args)
+
+# Run a mocha tests
+run_mocha = (args, cb) =>
+  proc_extender cb, spawn 'node', ['./node_modules/.bin/mocha'].concat(args)
 
 # Log a message with a color.
 log = (message, color, explanation) ->
@@ -31,11 +42,11 @@ log = (message, color, explanation) ->
 task 'build', 'build module from source', build = (cb) ->
   files = fs.readdirSync 'src'
   files = ('src/' + file for file in files when file.match(/\.coffee$/))
-  run ['-c', '-o', 'lib/'].concat(files), cb
+  run_coffee ['-c', '-o', 'lib/'].concat(files), cb
   log ' -> build done', green
   
 task 'test', 'test builded module', ->
   build ->
-    test_file = 'test/run.coffee'
-    run test_file, -> log ' -> all tests passed :)', green
+    test_file = './test/extend_test.coffee'
+    run_mocha test_file, -> log ' -> all tests passed :)', green
   
